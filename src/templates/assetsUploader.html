@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Form</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a69);
+            color: #fff;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            font-weight: 400;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #ff7eb3;
+            color: #fff;
+            padding: 12px 18px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #ff4f91;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 22px;
+            color: #ffdf6e;
+        }
+
+        p a {
+            color: #a2f3ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            margin-top: 15px;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Avaronn</h1>
+    <h2>Upload an Asset</h2>
+    <form action="/assetUploader" method="POST" enctype="multipart/form-data">
+        <label for="name">Enter Asset Name:</label>
+        <input type="text" id="name" name="asset_name" required>
+        
+        <label for="image">Upload Asset:</label>
+        <input type="file" id="image" name="asset" accept="image/png, image/jpeg, image/gif, image/svg+xml" required>
+        
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if path_to_s3 %}
+        <h3>Uploaded Successfully! ✅</h3>
+        <p>File URL: <a href="{{ path_to_s3 }}" target="_blank">{{ path_to_s3 }}</a></p>
+        
+        {% if path_to_s3.endswith(('.png', '.jpg', '.jpeg', '.gif', '.svg')) %}
+            <img src="{{ path_to_s3 }}" alt="Uploaded Image">
+        {% endif %}
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background: #2a2d35;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            background-color: #ffd000;
+            color: black;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color:rgb(209, 172, 7);
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Api Tester Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p class="error-message" id="error-message">Invalid credentials</p>
+    </div>
+    
+    <script>
+        async function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+
+            try {
+                const response = await fetch("/getDocs", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                if (response.ok) {
+                    const html = await response.text();
+                    document.open();
+                    document.write(html); 
+                    document.close();
+                } else {
+                    errorMessage.style.display = "block";
+                }
+            } catch (error) {
+                errorMessage.textContent = "Network error";
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaronn API Playground</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/apiPlayground.css">
+
+</head>
+<body>
+    <div class="sidebar">
+        <h3>Avaronn API Playground</h3>
+        <div class="folder">
+            <div class="folder-title" onclick="toggleFolder(this)">Login and Signup <i class="fas fa-chevron-down"></i></div>
+            <ul class="api-list">
+                <li onclick="loadApi('sendOTP')">Send OTP</li>
+                <li onclick="loadApi('verifyOTP')">Verify OTP</li>
+                <li onclick="loadApi('refreshAccessToken')">Refresh Access Token</li>
+            </ul>
+
+            <div class="folder-title" onclick="toggleFolder(this)">Driver <i class="fas fa-chevron-down"></i></div>
+            <ul class="api-list">
+                <li onclick="loadApi('driver_updateMainAttribute')">Update Attribute</li>
+                <li onclick="loadApi('driver_updateMainFile')">Update File</li>
+                <li onclick="loadApi('driver_getProfileData')">Get Profile Data</li>
+                <li onclick="loadApi('driver_getDocsData')">Get Docs Data</li>
+                <li onclick="loadApi('driver_getVehicleData')">Get Vehicle Data</li>
+                <li onclick="loadApi('driver_markPresent')">Mark Present</li>
+                <li onclick="loadApi('driver_markAbsent')">Mark Absent</li>
+                <li onclick="loadApi('driver_haveAttendance')">Have Attendance</li>
+                <li onclick="loadApi('driver_attendanceStatus')">Get Attendance Status</li>
+                <li onclick="loadApi('driver_porterTripOn')">Porter Trip On</li>
+                <li onclick="loadApi('driver_porterTripOff')">Porter Trip off</li>
+                <li onclick="loadApi('driver_getPorterTrips')">Get Porter Trips</li>
+                <li onclick="loadApi('driver_getTasks')">Get Tasks</li>
+            </ul>
+
+            <div class="folder-title" onclick="toggleFolder(this)">MFO <i class="fas fa-chevron-down"></i></div>
+            <ul class="api-list">
+                <li onclick="loadApi('mfo_updateMainAttribute')">Update Main Attribute</li>
+                <li onclick="loadApi('mfo_updateMainFile')">Update Main File</li>
+                <li onclick="loadApi('mfo_updateBusinessAttribute')">Update Business Attribute</li>
+                <li onclick="loadApi('mfo_updateBusinessFile')">Update Business File</li>
+                <li onclick="loadApi('mfo_updateLeasingAttribute')">Update Leasing Attribute</li>
+                <li onclick="loadApi('mfo_updateLeasingFile')">Update Leasing File</li>
+                <li onclick="loadApi('mfo_getProfileData')">Get Profile Data</li>
+                <li onclick="loadApi('mfo_getBusinessData')">Get Business Data</li>
+                <li onclick="loadApi('mfo_getLeasingData')">Get Leasing Data</li>
+                <li onclick="loadApi('mfo_registerOrAddDriver')">Register Or Add Driver</li>
+                <li onclick="loadApi('mfo_verifyAndAddDriver')">Verify And Add Driver</li>
+
+            </ul>
+
+
+
+            <div class="folder-title" onclick="toggleFolder(this)">Vehicle <i class="fas fa-chevron-down"></i></div>
+            <ul class="api-list">
+                <li onclick="loadApi('vehicle_addVehicle')">Add Vehicle</li>
+                <li onclick="loadApi('vehicle_updateVehicleAttribute')">Update Vehicle Attribute</li>
+                <li onclick="loadApi('vehicle_updateVehicleDocs')">Update vehicle Docs</li>
+                <li onclick="loadApi('vehicle_updateVehicleAssignment')">Update Vehicle Assignment</li>
+                <li onclick="loadApi('vehicle_getVehicleData')">Get Vehicle Data</li>
+                <li onclick="loadApi('vehicle_getVehicleAssignedData')">Get Vehicle Assigned Data</li>
+                <li onclick="loadApi('vehicle_getAllVehicles')">Get All Vehicles</li>
+
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Avaronn</h1>
+        <br>
+        <input type="text" id="base-url" placeholder="Enter Base API URL" value="https://avaronn-backend-development-server.pemy8f8ay9m4p.ap-south-1.cs.amazonlightsail.com" />
+        
+        <select id="auth-type">
+            <option value="None">None</option>
+            <option value="Bearer">Bearer Token</option>
+        </select>
+        <input type="text" id="auth" placeholder="Enter Authorization Token" />
+        
+        <select id="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+        </select>
+
+        <select id="content-type" onchange="toggleContentType()">
+            <option value="json">JSON</option>
+            <option value="form-data">Form Data</option>
+        </select>
+
+        <input type="text" id="url" placeholder="Enter API Endpoint" />
+
+        <!-- JSON Body -->
+        <textarea id="body" placeholder="{}"></textarea>
+
+        <!-- Form Data Fields -->
+        <div id="form-data-fields" class="hidden">
+            <div id="attributes-container"></div>
+            <button type="button" onclick="addAttribute()">+ Add Attribute</button>
+            <input type="file" id="file-input" multiple />
+        </div>
+
+        <button onclick="sendRequest()">Send Request</button>
+        
+        <h3>Response</h3>
+        <textarea id="response" readonly></textarea>
+    </div>
+    
+    <script src="/static/apiPlayground.js"></script>
+</body>
+</html>

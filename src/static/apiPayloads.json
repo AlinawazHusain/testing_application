@@ -1,0 +1,416 @@
+{
+    "sendOTP": { 
+        "method": "POST",
+        "endpoint": "/sendOtp",
+        "auth_type" : "None",
+        "content_type" : "json",
+        "body":
+            {
+                "country_code": "+91" ,
+                "phone_number": "Enter Your Phone Number"
+            }
+    },
+
+    "verifyOTP": {
+        "method": "POST",
+        "endpoint": "/verifyOtp",
+        "auth_type" : "None",
+        "content_type" : "json",
+        "body":
+            {
+                "country_code": "+91" ,
+                "phone_number": "Enter Your Phone Number",
+                "otp": "Enter OTP",
+                "request_id" : "Enter request id",
+                "user" : "Enter user : mfo/driver",
+                "fcm_token" : "Enter  fcm token"
+            }
+    },
+
+    "refreshAccessToken" : {
+        "method": "GET",
+        "endpoint": "/refreshAccessToken",
+        "auth_type" : "None",
+        "content_type" : "json",
+        "body": 
+            {
+                "refresh-token" : "Enter Refresh Token"
+            }
+    },
+
+
+
+    "driver_updateMainAttribute":{
+        "method" : "PUT",
+        "endpoint":"/driver/updateMainAttribute",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body":
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+    "driver_updateMainFile":{
+        "method" : "POST",
+        "endpoint": "/driver/updateMainFile",
+        "auth_type" : "Bearer",
+        "content_type" : "form-data",
+        "body": 
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+    "driver_getProfileData":{
+        "method" : "GET",
+        "endpoint": "/driver/getProfileData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+    "driver_getDocsData" :{
+        "method" : "GET",
+        "endpoint": "/driver/getDocsData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+    "driver_getVehicleData" :{
+        "method" : "GET",
+        "endpoint": "/driver/getVehicleData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+
+    "driver_markPresent" : {
+        "method" : "PUT",
+        "endpoint": "/driver/markPresent",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "driver_lat" : 4.5,
+            "driver_lng" : 2.57
+        }
+    },
+
+
+    "driver_markAbsent" : {
+        "method" : "PUT",
+        "endpoint": "/driver/markAbsent",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "driver_lat" : 4.5,
+            "driver_lng" : 2.57
+        }
+    },
+
+    "driver_haveAttendance" : {
+        "method" : "GET",
+        "endpoint" : "/driver/haveAttendance",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+    "driver_attendanceStatus" : {
+        "method" : "GET",
+        "endpoint": "/driver/attendanceStatus",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+
+    "driver_porterTripOn" : {
+        "method" : "POST",
+        "endpoint": "/driver/porterTripOn",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "driver_lat" : 6.7,
+            "driver_lng" : 22.4
+        }
+    },
+
+    "driver_porterTripOff" : {
+        "method" : "PUT",
+        "endpoint": "/driver/porterTripOff",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "uuid" : "ENTER PORTER TRIP UUID",
+            "driver_lat" : 6.7,
+            "driver_lng" : 22.4
+        }
+    },
+
+    "driver_getPorterTrips" : {
+        "method" : "GET",
+        "endpoint" : "/driver/getPorterTrips",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+
+    "driver_getTasks" : {
+        "method" : "GET",
+        "endpoint": "/driver/getTasks",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+
+
+
+
+
+
+    "mfo_updateMainAttribute":{
+        "method" : "PUT",
+        "endpoint":"/mfo/updateMainAttribute",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body":
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+    "mfo_updateMainFile":{
+        "method" : "POST",
+        "endpoint": "/mfo/updateMainFile",
+        "auth_type" : "Bearer",
+        "content_type" : "form-data",
+        "body": 
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+
+    
+    "mfo_updateBusinessAttribute":{
+        "method" : "PUT",
+        "endpoint":"/mfo/updateBusinessAttribute",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body":
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+    "mfo_updateBusinessFile":{
+        "method" : "POST",
+        "endpoint": "/mfo/updateBusinessFile",
+        "auth_type" : "Bearer",
+        "content_type" : "form-data",
+        "body": 
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+
+
+    
+    "mfo_updateLeasingAttribute":{
+        "method" : "PUT",
+        "endpoint":"/mfo/updateLeasingAttribute",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body":
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+    "mfo_updateLeasingFile":{
+        "method" : "POST",
+        "endpoint": "/mfo/updateLeasingFile",
+        "auth_type" : "Bearer",
+        "content_type" : "form-data",
+        "body": 
+            {
+                "updates" : {
+                    "attribute" : "value"
+                }
+            }
+    },
+
+
+
+    "mfo_getProfileData":{
+        "method" : "GET",
+        "endpoint": "/mfo/getProfileData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+
+    "mfo_getBusinessData":{
+        "method" : "GET",
+        "endpoint": "/mfo/getBusinessData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+    "mfo_getLeasingData":{
+        "method" : "GET",
+        "endpoint": "/mfo/getLeasingData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    },
+
+
+
+    "mfo_registerOrAddDriver" : {
+        "method" : "POST",
+        "endpoint": "/mfo/registerOrAddDriver",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "country_code" : "+91",
+            "driver_phone_number" : ""
+        }
+    },
+
+    "mfo_verifyAndAddDriver" :{
+        "method" : "POST",
+        "endpoint": "/mfo/verifyAndAddDriver",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "country_code" : "+91",
+            "driver_phone_number" : "",
+            "driver_name" : "",
+            "otp" : "",
+            "request_id" : "",
+            "vehicle_uuid" : null,
+            "driver_role" : null
+        }
+    },
+
+
+
+
+
+    "vehicle_addVehicle":{
+        "method" : "POST",
+        "endpoint": "/addVehicle",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "vehicle_number" : "",
+            "driver_uuid" : null,
+            "driver_role" : null
+        }
+    },
+
+
+
+    "vehicle_updateVehicleAttribute" : {
+        "method" : "PUT",
+        "endpoint": "/updateVehicleAttribute",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "vehicle_uuid" : "",
+            "updates" : {
+                "attribute" : "value"
+            }
+        }
+    },
+
+
+    "vehicle_updateVehicleDocs":{
+        "method" : "PUT",
+        "endpoint": "/updateVehicleDocs",
+        "auth_type" : "Bearer",
+        "content_type" : "form-data",
+        "body": null
+    },
+
+
+    "vehicle_updateVehicleAssignment" : {
+        "method" : "PUT",
+        "endpoint": "/updateVehicleAssignment",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "vehicle_uuid" : "",
+            "driver_uuid" : "",
+            "driver_role" : ""
+        }
+    },
+
+
+
+    "vehicle_getVehicleData" : {
+        "method" : "GET",
+        "endpoint": "/getVehicleData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "vehicle_uuid" : ""
+        }
+    },
+
+
+    "vehicle_getVehicleAssignedData" : {
+        "method" : "GET",
+        "endpoint": "/getVehicleAssignedData",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": {
+            "vehicle_uuid" : ""
+        }
+    },
+
+
+
+    "vehicle_getAllVehicles" : {
+        "method" : "GET",
+        "endpoint": "/getAllVehicles",
+        "auth_type" : "Bearer",
+        "content_type" : "json",
+        "body": null
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+}

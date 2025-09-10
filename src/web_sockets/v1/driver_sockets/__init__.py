@@ -1,0 +1,13 @@
+from fastapi import APIRouter
+from .driver_location_websocket import driver_location_websocket_router
+from .driver_task_management_websocket import driver_task_management_websocket_router
+from .temp_driver_websocket import temp_driver_location_websocket_router
+from .driver_hotspot_websocket import driver_hotspot_websocket_router
+driver_websocket_v1_router = APIRouter(tags = ["Driver websocket v1 router"])
+
+
+
+driver_websocket_v1_router.include_router(driver_location_websocket_router)
+driver_websocket_v1_router.include_router(driver_task_management_websocket_router)
+driver_websocket_v1_router.include_router(temp_driver_location_websocket_router)
+driver_websocket_v1_router.include_router(driver_hotspot_websocket_router)

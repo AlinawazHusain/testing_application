@@ -1,0 +1,59 @@
+name: Deploy to Elastic Beanstalk - Development
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  deploy:
+    name: Build and Deploy Docker App
+    runs-on: ubuntu-latest
+    environment: development-env
+
+    env:
+      EB_APP_NAME: ${{ secrets.EB_APP_NAME }}
+      EB_ENV_NAME: ${{ secrets.EB_ENV_NAME }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_ACCESS_SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      SERVER: ${{ secrets.SERVER }}
+      FILE_UPLOAD_BUCKET: ${{ secrets.FILE_UPLOAD_BUCKET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install AWS EB CLI
+        run: pip install awsebcli
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Initialize EB CLI
+        run: |
+          eb init $EB_APP_NAME \
+            --platform docker \
+            --region $AWS_REGION
+          eb use $EB_ENV_NAME
+
+      - name: Set environment variables in EB
+        run: |
+          eb setenv \
+            AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+            AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+            AWS_REGION=${{ secrets.AWS_REGION }} \
+            SERVER=${{ secrets.SERVER }}\
+            FILE_UPLOAD_BUCKET=${{ secrets.FILE_UPLOAD_BUCKET }}
+
+      - name: Deploy to Elastic Beanstalk
+        run: eb deploy

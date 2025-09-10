@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #181818;
+    color: white;
+}
+.sidebar {
+    width: 280px;
+    background: #242424;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #333;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+.container{
+    text-align: center;
+}
+
+h1{
+    color:#ffd000;
+}
+.sidebar h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ffd000;
+}
+.folder-title {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+.api-list {
+    list-style: none;
+    padding: 10px 0;
+    display: none;
+}
+.api-list li {
+    padding: 10px;
+    cursor: pointer;
+}
+.api-list li:hover {
+    background: #333;
+    border-radius: 5px;
+}
+.container {
+    flex-grow: 1;
+    max-width: 700px;
+    background: #222;
+    padding: 25px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    margin-left: 300px;
+}
+input, select, button, textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    background: #333;
+    color: white;
+}
+button {
+    background: #ffd000;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    background: #dbcb4f;
+    transform: scale(1.05);
+}
+textarea {
+    height: 180px;
+    resize: none;
+}
+.hidden {
+    display: none;
+}
+#attributes-container div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+#attributes-container input {
+    flex: 1;
+    font-size: 1rem;
+    padding: 10px;
+}
+#attributes-container button {
+    background: #ff4d4d;
+    font-size: 14px;
+    padding: 6px 12px;
+}
+#attributes-container button:hover {
+    background: #e33d3d;
+}
